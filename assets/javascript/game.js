@@ -10,6 +10,8 @@ $(document).ready(function() {
         //will create a button for each iterration within the array
         createTopicButton(topics[i]);
     }
+
+    $("#demo").text($("#myRange").val());
 });
     
 //create a function called createTopicButton and assign a parameter called newTopicText
@@ -48,14 +50,23 @@ function initializeEventHandlers(){
         };
     });
 
+    $("#myRange").change(function(){
+        $("#demo").text($(this).val());
+    })
+
+
     //event handler has attached an event (click) onto the buttons based on the function "initializeEventHanlder", we only want this to happen when the user clicks the button so we have to detach (.unbind) first
     $(".topicsButton").unbind("click");
     //then listen for the .click and execute
     $(".topicsButton").click(function(){
+        var numberValue = $("#myRange").val()
+
+
         //call the function and pass the values "this.text" because we want whatever button was clicked on to be what value is passed to the function
-        getGiphyStuff($(this).text());
+        getGiphyStuff($(this).text(), numberValue);
     });
 }
+
 
 //condition created that will not allow a user to submit if the field is blank or if using spaces
 //if text for button does not equal "" (blank)
@@ -70,9 +81,11 @@ function newButtonValid (newTopicText){
 }
 
 //function to call the api and get the gifs using the input from the user
-function getGiphyStuff(queryText){
+
+function getGiphyStuff(queryText, valueNumber){
     $.ajax({
-        url: "https://api.giphy.com/v1/gifs/search?api_key=NahfTXxPEBW0emPiN880sy1Vhm8llXUy&q=" + queryText + "&limit=3",
+        url: "https://api.giphy.com/v1/gifs/search?api_key=NahfTXxPEBW0emPiN880sy1Vhm8llXUy&q=" + queryText + "&limit=" + valueNumber, 
+        // numberValue,
         method: "GET"
     }).then(function(response){
         //clear the gifs (this is going to happen only when the button is clicked multiple times)
@@ -129,4 +142,4 @@ function gifSwaper(newUrl,image,url){
         //run the function again and change the newUrl with the original
         gifSwaper(url,image,newUrl);
     });
-};
+}

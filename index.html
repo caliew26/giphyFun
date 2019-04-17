@@ -13,18 +13,21 @@
         
     </head>
     <body>
-        <header>This is going to be so much fun!</header>
+        <header>Would you like to see some cool pics of characters?</header>
 
         <!-- 
             https://developers.giphy.com/
             apikey=NahfTXxPEBW0emPiN880sy1Vhm8llXUy
         -->
 
-        
-
         <div class="container">
             <div class="row">
                 <div id="topicsButtons"></div>
+                    <div class="slidecontainer">
+                        <input type="range" min="1" max="10" value="10" class="slider" id="myRange">
+                        <p>Choose how many results you would like: <span id="demo"></span></p>
+                    </div>
+                </div>
             </div> 
 
             <div class="row">
