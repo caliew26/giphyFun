@@ -1,8 +1,6 @@
 //setting global variable
 var topics = ["Mickey Mouse", "Minnie Mouse", "Donald Duck", "Daisy Duck","Huey Duck", "Dewey Duck", "Scrooge McDuck", "Goofy", "Pluto", "Peter Pan", "Cinderella", "Jasmine", "Sleeping Beauty", "Rapunzel", "Belle", "Pocahontas", "Walt Disney"];
 
-//var topics = ['Alabama','Alaska','American Samoa','Arizona','Arkansas','California','Colorado','Connecticut','Delaware','District of Columbia','Federated States of Micronesia','Florida','Georgia','Guam','Hawaii','Idaho','Illinois','Indiana','Iowa','Kansas','Kentucky','Louisiana','Maine','Marshall Islands','Maryland','Massachusetts','Michigan','Minnesota','Mississippi','Missouri','Montana','Nebraska','Nevada','New Hampshire','New Jersey','New Mexico','New York','North Carolina','North Dakota','Northern Mariana Islands','Ohio','Oklahoma','Oregon','Palau','Pennsylvania','Puerto Rico','Rhode Island','South Carolina','South Dakota','Tennessee','Texas','Utah','Vermont','Virgin Island','Virginia','Washington','West Virginia','Wisconsin','Wyoming']
-
 //getting the DOM loaded/rendered
 $(document).ready(function() {
     //cycle through a for loop that will cycle through the number of items in the array
@@ -10,10 +8,10 @@ $(document).ready(function() {
         //will create a button for each iterration within the array
         createTopicButton(topics[i]);
     }
-
-    $("#demo").text($("#myRange").val());
+    initializeEventHandlers();
+    $("#resultsWanted").text($("#myRange").val());
 });
-    
+
 //create a function called createTopicButton and assign a parameter called newTopicText
 function createTopicButton(newTopicText){
     //declare a variable and assign the element
@@ -21,59 +19,70 @@ function createTopicButton(newTopicText){
     //add a bootstrap class to the element
     $(btn).addClass("btn-sm");
     //add a class to the element that will enable the eventhandler 
-    $(btn).addClass("topicsButton");
+    $(btn).addClass("addtopicsButton");
     //add text onto the new button
     $(btn).text(newTopicText);
     //adding the button just generated to the DOM/HTML
     $("#topicsButtons").append(btn);
-    //calling the function 
-    initializeEventHandlers();
+    //calling a function 
+    topicButtonEventInitializer(btn);
+    //console.log("function createTopicButton");
+
 }
 
 //create a function
 function initializeEventHandlers(){
     //need to remove all eventhandlers from the element id
-    $("#newTopicSubmit").unbind("click");
+    // $("#newTopicSubmit").unbind("click");
     //user inputs a value into the box
     $("#newTopicSubmit").click(function(){
+        event.preventDefault();
         //onclick. declare a variable and capture the value from the user 
-        var newTopicInput = $("#newTopicInput").val();
+        var newTopicInput = $("#newTopicInput").val().trim();
         //if the value is valid, then create a new button
         if(newButtonValid(newTopicInput)){
             //use the input provided and apply it to the button
             createTopicButton(newTopicInput);
             //add the new button to the array of topics
             topics.push(newTopicInput)
+            $("#newTopicInput").val("");
+            
         } else {
             //if the input provided matches the existing button, alert user to create a new character
-            alert("Please add a character that is not on the current list")
+            alert("Please add a character that is not on the current list");
         };
     });
-
-    $("#myRange").change(function(){
-        $("#demo").text($(this).val());
-    })
-
-
-    //event handler has attached an event (click) onto the buttons based on the function "initializeEventHanlder", we only want this to happen when the user clicks the button so we have to detach (.unbind) first
-    $(".topicsButton").unbind("click");
-    //then listen for the .click and execute
-    $(".topicsButton").click(function(){
-        var numberValue = $("#myRange").val()
-
-
-        //call the function and pass the values "this.text" because we want whatever button was clicked on to be what value is passed to the function
-        getGiphyStuff($(this).text(), numberValue);
+    
+    $("#newTopicInput").keyup(function(event){
+        if(event.keyCode === 13) {
+            $("#newTopicSubmit").click();
+           console.log("this is the enter key stuffs");
+        }
     });
+
+    //get the range from the slider and populate it onto the html
+    $("#myRange").change(function(){
+        $("#resultsWanted").text($(this).val());
+        console.log("")
+    });
+
 }
 
+function topicButtonEventInitializer(button){
+    $(button).click(function() {
+        var numberValue = $("#myRange").val();
+        getGiphyStuff($(this).text(), numberValue);
+        // console.log("")
+    })
+}
 
 //condition created that will not allow a user to submit if the field is blank or if using spaces
 //if text for button does not equal "" (blank)
 function newButtonValid (newTopicText){
     if(newTopicText != ""){
         //return the array of indexes, and if result is -1 then populate
-        return topics.indexOf(newTopicText) == -1
+        return topics.indexOf(newTopicText) == -1;
+
     } else {
         //return the array of indexes and if anything other than -1 return false which will populate the alert "Please add a character that is not on the current list"
         return false
