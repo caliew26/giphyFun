@@ -158,7 +158,9 @@ figure {
 
 img {
   vertical-align: middle;
-  border-style: none; }
+  border-style: none;
+  opacity: 0.3;
+ }
 
 svg {
   overflow: hidden;
