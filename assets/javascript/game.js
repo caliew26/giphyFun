@@ -17,7 +17,7 @@ function createTopicButton(newTopicText){
     //declare a variable and assign the element
     var btn = document.createElement("BUTTON");
     //add a bootstrap class to the element
-    $(btn).addClass("btn-sm");
+    $(btn).addClass("btn btn-primary");
     //add a class to the element that will enable the eventhandler 
     $(btn).addClass("addtopicsButton");
     //add text onto the new button
@@ -56,7 +56,7 @@ function initializeEventHandlers(){
     $("#newTopicInput").keyup(function(event){
         if(event.keyCode === 13) {
             $("#newTopicSubmit").click();
-           console.log("this is the enter key stuffs");
+        //    console.log("this is the enter key stuffs");
         }
     });
 
@@ -112,6 +112,8 @@ function getGiphyStuff(queryText, valueNumber){
 function gifOntoPage(url,urlAnime,rating){
     //declare a variable that will create a div element on the DOM
     var gifDiv = document.createElement("div");
+    //add class to div
+    $(gifDiv).addClass("card");
     //delcare a variable that will create an image element on the DOM
     var gifPlaceHolder = document.createElement("img");
     //set attribute for src and url to the image DOM just declared
@@ -132,7 +134,7 @@ function gifOntoPage(url,urlAnime,rating){
     //use variable and input text from the api call onto the DOM
     $(gifRating).text("Rating: " + rating);
     //put the declared rating variable onto the div within the DOM
-    $(gifDiv).append(rating);
+    $(gifDiv).append(gifRating);
     //put the delcared image var onto the div within the DOM
     $(gifDiv).append(gifPlaceHolder);
     //put the delcared div var onto the placeholder (ID placehere) within the DOM
