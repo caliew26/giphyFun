@@ -94,22 +94,27 @@ function newButtonValid (newTopicText){
 function getGiphyStuff(queryText, valueNumber){
     $.ajax({
         url: "https://api.giphy.com/v1/gifs/search?api_key=NahfTXxPEBW0emPiN880sy1Vhm8llXUy&q=" + queryText + "&limit=" + valueNumber, 
-        // numberValue,
         method: "GET"
     }).then(function(response){
+        
         //clear the gifs (this is going to happen only when the button is clicked multiple times)
-        $("#placehere").empty();
+        $("#myGiphyColumn0").empty(), 
+        $("#myGiphyColumn1").empty(),
+        $("#myGiphyColumn2").empty()
         //run through the array of responses
         for(let i = 0; i < response.data.length; i++){
-        //run functon that will get the arguments for the image url, the urlAnime and the rating
-        gifOntoPage(response.data[i].images.downsized_still.url,response.data[i].images.downsized.url,response.data[i].rating);
-        //console.log(response.data[i]);
+        //run functon that will get the arguments for the image url, the urlAnime and the rating and the columnPlace index
+        gifOntoPage(response.data[i].images.downsized_still.url,response.data[i].images.downsized.url,response.data[i].rating, "myGiphyColumn"+ (i % 3));
+        
+        // console.log(response.data[i]);
+        
+        console.log(i % 3);
     }
     });
 }
 
 
-function gifOntoPage(url,urlAnime,rating){
+function gifOntoPage(url,urlAnime,rating,columnPlace){
     //declare a variable that will create a div element on the DOM
     var gifDiv = document.createElement("div");
     //add class to div
@@ -126,7 +131,7 @@ function gifOntoPage(url,urlAnime,rating){
     //add atribute of height to the image - might not need this
     // gifPlaceHolder.setAttribute("height", "768");
     //add atribute of width to the image, use % so that it will react with the page movement
-    gifPlaceHolder.setAttribute("width", "40%");
+    gifPlaceHolder.setAttribute("width", "100%");
     //declare a variable that will create a p(paragraph) element on the DOM
     var gifRating = document.createElement("p");
     //use variable and add a class of rating
@@ -138,7 +143,7 @@ function gifOntoPage(url,urlAnime,rating){
     //put the delcared image var onto the div within the DOM
     $(gifDiv).append(gifPlaceHolder);
     //put the delcared div var onto the placeholder (ID placehere) within the DOM
-    $("#placehere").append(gifDiv);
+    $("#"+columnPlace).append(gifDiv);
 }
 
 //function that will take a "new" url and swap it from still to animated
