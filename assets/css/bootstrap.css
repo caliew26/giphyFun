@@ -52,7 +52,8 @@ body {
   color: #888;
   text-align: left;
   background-color: #fff;
-  border: 2px solid black; }
+  border: 2px solid black;
+  padding-bottom: 20px; }
 
 [tabindex="-1"]:focus {
   outline: 0 !important; }
