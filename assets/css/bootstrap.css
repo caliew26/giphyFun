@@ -51,7 +51,8 @@ body {
   line-height: 1.5;
   color: #888;
   text-align: left;
-  background-color: #fff; }
+  background-color: #fff;
+  border: 2px solid black; }
 
 [tabindex="-1"]:focus {
   outline: 0 !important; }
@@ -182,7 +183,8 @@ label {
   margin-bottom: 0.5rem; }
 
 button {
-  border-radius: 0; }
+  border-radius: 0;
+margin-bottom: 5%; }
 
 button:focus {
   outline: 1px dotted;

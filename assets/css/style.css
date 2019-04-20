@@ -1,15 +1,14 @@
-#myGiphyColumnOne {
-    border: 2px solid black;
+header {
+    text-align: center;
+    font-size: 500%;
+    color: #F3969A;
 }
 
-#myGiphyColumnTwo {
-    border: 2px solid black;
+.main {
+    color: #F3969A;
+    text-align: center;
 }
 
-#myGiphyColumnThree {
-    border: 2px solid black;
-}
-
-#placehere {
-    border: 2px solid black;
+#newTopicSubmit {
+    margin-bottom: 8%;
 }

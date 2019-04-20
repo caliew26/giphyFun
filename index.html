@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,49 +8,49 @@
         <title>Giphy!!!</title>
         <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> -->
         <link rel="stylesheet" href="assets/css/bootstrap.css">
+        <link rel="stylesheet" href="assets/css/style.css">
         <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js">
         </script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+            crossorigin="anonymous"></script>
         <script src="assets/javascript/game.js"></script>
-        
-    </head>
-    <body>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark text-white text-center text-center">Would you like to see some cool pics of characters?</nav>
-            <!-- <img src="assets/images/disneycastle.jpg" alt="DisneyCastle"> -->
-        <!-- 
-            https://developers.giphy.com/
-            apikey=NahfTXxPEBW0emPiN880sy1Vhm8llXUy
-        -->
 
+    </head>
+
+    <body>
+        <header>Disney Giphys!</header>
+        <!-- <img src="assets/images/disneycastle.jpg" alt="DisneyCastle"> -->
+        <!-- 
+                https://developers.giphy.com/
+                apikey=NahfTXxPEBW0emPiN880sy1Vhm8llXUy
+            -->
+        <div class="main">Select the number of gifs you'd like to see and clic the button of the character you'd like.</div>
         <div class="container px-md-10">
             <div class="row">
                 <div id="topicsButtons"></div>
-                    <div class="slidecontainer">
-                        <input type="range" min="1" max="10" value="10" class="slider" id="myRange">
-                        <p>Choose how many results you would like: <span id="resultsWanted"></span></p>
-                    </div>
-                </div>
-            </div> 
-
-            <div class="row">
-                <div class="col-8 px-md-5" id="placehere">
-                <div class="row">
-                    <div class="col-3" id="myGiphyColumn0">test1</div>
-                    <div class="col-3" id="myGiphyColumn1">test2</div>
-                    <div class="col-3" id="myGiphyColumn2">test3</div>
-                </div>
-            </div>
-                        
-
-
-                <div class="col-3 mb-1 card card-text">
-                    <p class="card-title mr-3">Add any Character:</p>
-                    <input type="text" id="newTopicInput" placeholder="Input Character Here"/>
-                    
-                    <button class="btn-primary mb-2" id="newTopicSubmit">Submit</button>
-
+                <div class="slidecontainer">
+                    <input type="range" min="1" max="10" value="10" class="slider" id="myRange">
+                    <p>Choose how many results you would like: <span id="resultsWanted"></span></p>
                 </div>
             </div>
         </div>
+
+        <div class="row">
+            <div class="col-10 ml-5" id="placehere">
+                <div class="row">
+                    <div class="col-3" id="myGiphyColumn0"></div>
+                    <div class="col-3" id="myGiphyColumn1"></div>
+                    <div class="col-3" id="myGiphyColumn2"></div>
+
+                    <div class="col-3 card card-text">
+                        <p class="card-title">Add any Character:</p>
+                        <input type="text" id="newTopicInput" placeholder="Input Character Here"/>
+
+                        <button class="btn-primary" id="newTopicSubmit">Submit</button>
+
+                    </div>
+                </div>
+            </div>
     </body>
 </html>
