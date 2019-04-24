@@ -1,6 +1,6 @@
-As you travel into this GiphyTastic voyage you will get to see some very randome gifs of your favorite Disney characters (and some other random returned thigns).
+As you travel into this GiphyTastic voyage you will get to see some very random gifs of your favorite Disney characters (and some other random returned things).
 
-When you open the page you'll be able to select any disney character and the number of images you'd like to have returned.
+When you open the page you'll be able to select any disney character already there and the number of images you'd like to have returned.
 
 You are welcome to add any other characters you'd like to see as well; if you try and add a character thats already there, I'll let you know.
 
